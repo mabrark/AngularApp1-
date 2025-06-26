@@ -17,14 +17,14 @@
     <mat-form-field appearance="fill" class="fullWidth">
       <mat-label>Conservation Area</mat-label>
       <mat-select [(ngModel)]="area" name="area" required>
-        <mat-option *ngFor="let a of areas" [value]="a">{{ a }}</mat-option>
+        <mat-option *ngFor="let a of areas" [value]="area">{{ area }}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="fullWidth">
       <mat-label>Time Slot</mat-label>
       <mat-select [(ngModel)]="timeSlot" name="timeSlot" required>
-        <mat-option *ngFor="let t of timeSlots" [value]="t">{{ t }}</mat-option>
+        <mat-option *ngFor="let t of timeSlots" [value]="timeSlots">{{ timeSlots }}</mat-option>
       </mat-select>
     </mat-form-field>
 
