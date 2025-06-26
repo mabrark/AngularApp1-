@@ -1,0 +1,48 @@
+<mat-toolbar color="primary" class="mat-elevation-z3">
+  <span class="spacer"></span>
+  <span>{{ username }}'s Conservation Reservation Timing</span>
+  <span class="spacer"></span>
+  <mat-icon matBadge="{{ reservationCount }}" matBadgeColor="accent">checklist</mat-icon>
+</mat-toolbar>
+
+<div class="reservation-form">
+  <h2>Book a Conservation Area Visit</h2>
+  <form (ngSubmit)="makeReservation()" #reservationForm="ngForm">
+    
+    <mat-form-field appearance="fill" class="fullWidth">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="name" name="name" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="fullWidth">
+      <mat-label>Conservation Area</mat-label>
+      <mat-select [(ngModel)]="area" name="area" required>
+        <mat-option *ngFor="let a of areas" [value]="a">{{ a }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="fullWidth">
+      <mat-label>Time Slot</mat-label>
+      <mat-select [(ngModel)]="timeSlot" name="timeSlot" required>
+        <mat-option *ngFor="let t of timeSlots" [value]="t">{{ t }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Reserve</button>
+  </form>
+
+  <h3>Reservations:</h3>
+  <ul>
+    <li *ngFor="let r of reservations">
+      {{ r.name }} - {{ r.area }} - {{ r.timeSlot }}
+    </li>
+  </ul>
+</div>
+
+<div class="toggleContainer">
+  <span class="spacer"></span>
+  <mat-slide-toggle [(ngModel)]="showComplete">
+    Show Completed Reservations
+  </mat-slide-toggle>
+  <span class="spacer"></span>
+</div>
